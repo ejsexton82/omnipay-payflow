@@ -247,6 +247,8 @@ class AuthorizeRequest extends AbstractRequest
             $data['BILLTOSTATE'] = $this->getCard()->getState();
             $data['BILLTOZIP'] = $this->getCard()->getPostcode();
             $data['BILLTOCOUNTRY'] = $this->getCard()->getCountry();
+            $data['BILLTOEMAIL'] = $this->getCard()->getEmail();
+            $data['BILLTOPHONENUM'] = $this->getCard()->getBillingPhone();
         }
 
         $data['TENDER'] = 'C';
@@ -256,9 +258,6 @@ class AuthorizeRequest extends AbstractRequest
         $data['COMMENT2'] = $this->getComment2();
         $data['ORDERID'] = $this->getOrderId();
         $data['PONUM'] = $this->getPoNum();
-
-        $data['BILLTOEMAIL'] = $this->getCard()->getEmail();
-        $data['BILLTOPHONENUM'] = $this->getCard()->getBillingPhone();
 
         $items = $this->getItems();
         if (!empty($items)) {
